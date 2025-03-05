@@ -1,6 +1,6 @@
 import unittest
 
-from extractor import WikipediaExtractor
+from extractor.wikipedia import WikipediaExtractor
 
 
 class TestWikipediaExtractor(unittest.TestCase):
