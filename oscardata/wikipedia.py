@@ -1,4 +1,3 @@
-# Implementando um dataframe gigantesco onde
 from io import StringIO
 
 import httpx
@@ -8,6 +7,10 @@ from lxml import etree
 
 
 class WikipediaExtractor:
+    """
+    Gerar um dataset gigante com todos os ganhadores do oscar até agora e alguns metadados da própria wikipedia
+    """
+
     def __init__(
         self,
         ceremony_table_xpath="//*[@id='Ceremonies']/../following-sibling::table[1]",
@@ -17,9 +20,8 @@ class WikipediaExtractor:
         self.wikipedia_domain = wikipedia_domain
 
     def get_ceremonies(self) -> pd.DataFrame:
-        request = httpx.get(
-            f"{self.wikipedia_domain}/wiki/List_of_Academy_Awards_ceremonies"
-        )
+        url = f"{self.wikipedia_domain}/wiki/List_of_Academy_Awards_ceremonies"
+        request = httpx.get(url=url)
         request.raise_for_status()
 
         cerimony_table_bs4 = BeautifulSoup(request.text, "html.parser")
