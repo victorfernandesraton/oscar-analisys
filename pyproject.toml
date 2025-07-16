@@ -5,7 +5,15 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "bs4>=0.0.2",
+    "httpx>=0.28.1",
+    "lxml>=6.0.0",
     "matplotlib>=3.10.1",
+    "pandas>=2.2.3",
+    "python-decouple>=3.8",
     "seaborn>=0.13.2",
     "streamlit>=1.43.2",
 ]
+
+[project.scripts]
+oscardata = "oscardata.__main__:main"
