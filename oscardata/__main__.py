@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     ceremonies.to_csv("ceremony_base.csv")
 
-    winners = wikipedia_extractor.get_movies_all(ceremonies)
+    winners = wikipedia_extractor.get_movies_all(ceremonies[:-1])
 
     # winners = pd.read_csv("nominated_all.csv", sep=";")
 

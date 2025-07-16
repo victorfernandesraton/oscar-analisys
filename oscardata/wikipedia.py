@@ -50,8 +50,10 @@ class WikipediaExtractor:
 
             categories_in_ceremony_table = tree.xpath(
                 "//*[@id='Winners_and_nominees']/../following-sibling::table[1]"
-            )[0]
-            for tr in categories_in_ceremony_table.xpath(".//tbody/tr/td"):
+            )
+            if not categories_in_ceremony_table:
+                return pd.DataFrame()
+            for tr in categories_in_ceremony_table[0].xpath(".//tbody/tr/td"):
                 winner = tr.xpath(".//ul/li/b/i/a")
                 if not winner:
                     winner = tr.xpath(".//ul/li/i/b/a")
